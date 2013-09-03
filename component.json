@@ -1,0 +1,13 @@
+{
+  "name": "angular-linkto",
+  "version": "1.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0rc1",
+    "angular-mocks": "~1.2.0-rc.1"
+  }
+}
