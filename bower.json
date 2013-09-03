@@ -1,6 +1,7 @@
 {
   "name": "angular-linkto",
   "version": "1.0.0",
+  "main": "dist/angular-linkto.js",
   "ignore": [
     "**/.*",
     "node_modules",
