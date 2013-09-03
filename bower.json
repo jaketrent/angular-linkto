@@ -8,7 +8,6 @@
     "components"
   ],
   "dependencies": {
-    "angular-mocks": "~1.2.0-rc.1",
-    "angular": "1.2.0-rc.1"
+    "angular-mocks": "~1.0.8"
   }
 }
