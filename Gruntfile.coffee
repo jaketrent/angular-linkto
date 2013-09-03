@@ -29,3 +29,4 @@ module.exports = (grunt) ->
   matchdep.filterDev('grunt-*').forEach grunt.loadNpmTasks
 
   grunt.registerTask 'dist', [ 'clean', 'coffee', 'ngmin', 'uglify' ]
+  grunt.registerTask 'default', [ 'dist' ]
