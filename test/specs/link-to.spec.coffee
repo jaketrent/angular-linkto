@@ -34,21 +34,23 @@ describe 'angular-linkto.linkTo', ->
 
   it 'fills all named params', ->
     linkTo('/people/:id/stuff/:more', { id: 123, more: 'goodies' }).should.eql '/people/123/stuff/goodies'
-#
-#  # TODO: handle this circular dependency
-#  describe 'With Models', ->
-#
-#    TestModel = null
-#
-#    beforeEach inject (Module, AttributesMixin) ->
-#      class TestModel extends Module
-#        @include AttributesMixin
-#
-#        constructor: ->
-#          @attributes = {}
-#
-#    it 'handles a model with attributes', ->
-#      model = new TestModel
-#      model.set
-#        id: 123
-#      linkTo('/x/posts/:id', model).should.eql "/x/posts/#{model.get('id')}"
+
+  describe 'With protocols', ->
+
+    it 'ignores http://', ->
+      linkTo('http://google.com').should.eql 'http://google.com'
+
+    it 'ignores https://', ->
+      linkTo('https://google.com').should.eql 'https://google.com'
+
+    it 'ignores ftp://', ->
+      linkTo('ftp://google.com').should.eql 'ftp://google.com'
+
+    it 'ignores protocol and can remove trailing named param', ->
+      linkTo('ftp://google.com/something/:else').should.eql 'ftp://google.com/something'
+
+    it 'ignores protocol and can fill named params', ->
+      linkTo('ftp://google.com/something/:else', { else: 'forthwith' }).should.eql 'ftp://google.com/something/forthwith'
+
+    it 'throws error if unfilled param in middle of url', ->
+      (-> linkTo('ftp://google.com/:before/something')).should.throw()
